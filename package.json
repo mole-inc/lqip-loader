@@ -1,6 +1,6 @@
 {
-  "name": "lqip-loader",
-  "version": "2.2.0",
+  "name": "@mole-inc/lqip-loader",
+  "version": "3.0.0",
   "description": "Low Quality Image Placeholders (LQIP) loader for webpack",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zouhir/lqip-loader.git"
+    "url": "git+https://github.com/mole-inc/lqip-loader.git"
   },
   "keywords": [
     "Webpack",
@@ -24,12 +24,12 @@
   "author": "Zouhir Chahoud",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zouhir/lqip-loader/issues"
+    "url": "https://github.com/mole-inc/lqip-loader/issues"
   },
-  "homepage": "https://github.com/zouhir/lqip-loader#readme",
+  "homepage": "https://github.com/mole-inc/lqip-loader#readme",
   "dependencies": {
     "loader-utils": "^1.1.0",
-    "lqip": "^2.1.0"
+    "@mole-inc/lqip": "^3.1.0"
   },
   "peerDependencies": {
     "file-loader": "*"

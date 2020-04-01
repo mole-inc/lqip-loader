@@ -1,26 +1,12 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/zouhir/lqip/master/_github/logo.png" width="508">
-</p>
+# lqip-loader: low quality images placeholders for webpack
 
-<h4 align="center">lqip-loader: low quality images placeholders for webpack</h4>
-<p align="center">
-  <a align="center" href="https://lqip-loader.firebaseapp.com/">demo</a>
-</p>
-
-<br />
-<br />
-<p>
-  <img src="https://raw.githubusercontent.com/zouhir/lqip/master/_github/installation.png" width="100%">
-</p>
+## Installation
 
 ```
 npm install --save-dev lqip-loader
 ```
 
-<br />
-<p>
-  <img src="https://raw.githubusercontent.com/zouhir/lqip/master/_github/example.png" width="100%" />
-</p>
+## Usage Example
 
 Generating Base64 & dominant colours palette for a jpeg image imported in your JS bundle:
 
@@ -83,10 +69,7 @@ console.log(banner.src) // that's the original image URL to load later!
 
 ```
 
-<br />
-<p>
-  <img src="https://github.com/zouhir/lqip/blob/master/_github/important.png" width="100%" />
-</p>
+## Important
 
 To save memory and improve GPU performance, browsers (including Chrome started from 61.0.3163.38) will now render a 
 slightly more crisp or pixelated Base64 encoded images.
@@ -107,29 +90,19 @@ More history about the issue can be [found here](https://bugs.chromium.org/p/chr
 
 alternatively, you can fill the container with a really cheap colour or gradient from the amazing palette we provide.
 
-<br />
-<p>
-  <img src="https://raw.githubusercontent.com/zouhir/lqip/master/_github/inspo.png" width="100%" />
-</p>
+## Inspired by
 
 - [Medium web app](https://medium.com/cucumbertown-magazine/the-beginners-guide-to-composition-in-food-photography-how-to-transform-your-food-photos-from-good-39613ab78bf2)
 - [Instagram native mobile app](https://www.instagram.com/)
 - [Polymer shop project](https://shop.polymer-project.org/)
 
-<br />
-<p>
-  <img src="https://github.com/zouhir/lqip/blob/master/_github/mentions.png" width="100%" />
-</p>
+## Remarkable Mentions
 
-- Essential Image Optimization, An [eBook by Addy Osmany](https://images.guide/)
+- Essential Image Optimization, An [eBook by Addy Osmani](https://images.guide/)
 
-<br />
-<p>
-  <img src="https://raw.githubusercontent.com/zouhir/lqip/master/_github/creds.png" width="100%" />
-</p> 
+## Notes, Credits & License
 
-Related projects to this would be [lqip module for Node](https://github.com/zouhir/lqip) as well as [lqip-cli](https://github.com/zouhir/lqip-cli).
+This is a maintained fork of [zouhir/lqip-loader](https://github.com/zouhir/lqip-loader).  
+Original [lqip-loader](https://github.com/zouhir/lqip-loader) is released under The MIT License by [Zouhir Chahoud](https://zouhir.org/).
 
-Thanks to [Colin van Eenige](https://twitter.com/cvaneenige) for his reviewing and early testing.
-
-MIT - [Zouhir Chahoud](https://zouhir.org/)
+Please see LICENSE file
