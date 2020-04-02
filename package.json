@@ -4,7 +4,10 @@
   "description": "Low Quality Image Placeholders (LQIP) loader for webpack",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ext .js,.ts --ignore-path .gitignore .",
+    "lint:fix": "eslint --fix --ext .js,.ts --ignore-path .gitignore .",
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",
@@ -34,10 +37,32 @@
   "peerDependencies": {
     "file-loader": "*"
   },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.1.1",
+    "prettier": "^2.0.2",
+    "standard-version": "^7.1.0"
+  },
   "engines": {
     "node": ">=10.13.0"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npm run lint:fix"
+    ]
   }
 }

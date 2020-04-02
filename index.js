@@ -1,7 +1,7 @@
 var loaderUtils = require("loader-utils");
 var lqip = require("@mole-inc/lqip");
 
-module.exports = function(contentBuffer) {
+module.exports = function (contentBuffer) {
   this.cacheable && this.cacheable();
   var callback = this.async();
 
@@ -10,7 +10,7 @@ module.exports = function(contentBuffer) {
   var path = this.resourcePath;
 
   // user options
-  var config = loaderUtils.getOptions(this) || {};
+  var config = loaderUtils.getOptions(this);
 
   config.base64 = "base64" in config ? config.base64 : true;
   config.palette = "palette" in config ? config.palette : false;
@@ -58,7 +58,7 @@ module.exports = function(contentBuffer) {
 
   // final step, resolving all the promises we got so far
   Promise.all(outputPromises)
-    .then(data => {
+    .then((data) => {
       if (data) {
         var result = 'module.exports = { "src": ' + source;
         // either null or base64
@@ -73,10 +73,10 @@ module.exports = function(contentBuffer) {
         // the output will be sent to webpack!
         callback(null, result);
       } else {
-        callback(new Error('No data received'), null);
+        callback(new Error("No data received"), null);
       }
     })
-    .catch(error => {
+    .catch((error) => {
       console.error(error);
       callback(error, null);
     });
