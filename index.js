@@ -1,8 +1,7 @@
 var loaderUtils = require("loader-utils");
-// lqip: https://github.com/zouhir/lqip
-var lqip = require("lqip");
+var lqip = require("@mole-inc/lqip");
 
-module.exports = function(contentBuffer) {
+module.exports = function (contentBuffer) {
   this.cacheable && this.cacheable();
   var callback = this.async();
 
@@ -11,25 +10,27 @@ module.exports = function(contentBuffer) {
   var path = this.resourcePath;
 
   // user options
-  var config = loaderUtils.getOptions(this) || {};
+  var config = loaderUtils.getOptions(this);
 
   config.base64 = "base64" in config ? config.base64 : true;
   config.palette = "palette" in config ? config.palette : false;
 
-  var contentIsUrlExport = /^module.exports = "data:(.*)base64,(.*)/.test(
+  var contentIsUrlExport = /^(module.exports =|export default) "data:(.*)base64,(.*)/.test(
     content
   );
-  var contentIsFileExport = /^module.exports = (.*)/.test(content);
+  var contentIsFileExport = /^(module.exports =|export default) (.*)/.test(
+    content
+  );
   var source = "";
 
   if (contentIsUrlExport) {
-    source = content.match(/^module.exports = (.*)/)[1];
+    source = content.match(/^(module.exports =|export default) (.*)/)[2];
   } else {
     if (!contentIsFileExport) {
       var fileLoader = require("file-loader");
       content = fileLoader.call(this, contentBuffer);
     }
-    source = content.match(/^module.exports = (.*);/)[1];
+    source = content.match(/^(module.exports =|export default) (.*);/)[2];
   }
 
   // promise array in case users want both
@@ -57,7 +58,7 @@ module.exports = function(contentBuffer) {
 
   // final step, resolving all the promises we got so far
   Promise.all(outputPromises)
-    .then(data => {
+    .then((data) => {
       if (data) {
         var result = 'module.exports = { "src": ' + source;
         // either null or base64
@@ -72,12 +73,12 @@ module.exports = function(contentBuffer) {
         // the output will be sent to webpack!
         callback(null, result);
       } else {
-        callback(err, null);
+        callback(new Error("No data received"), null);
       }
     })
-    .catch(error => {
+    .catch((error) => {
       console.error(error);
-      callback(err, null);
+      callback(error, null);
     });
 };
 
