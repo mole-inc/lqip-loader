@@ -1,9 +1,13 @@
 # lqip-loader: low quality images placeholders for webpack
 
+[![Downloads](https://badgen.net/npm/dm/@mole-inc/lqip-loader)](https://www.npmjs.com/package/@mole-inc/lqip-loader)
+[![Version](https://badgen.net/npm/v/@mole-inc/lqip-loader)](https://www.npmjs.com/package/@mole-inc/lqip-loader)
+[![License](https://badgen.net/npm/license/@mole-inc/lqip-loader)](https://www.npmjs.com/package/@mole-inc/lqip-loader)
+
 ## Installation
 
 ```
-npm install --save-dev lqip-loader
+npm install --save-dev @mole-inc/lqip-loader
 ```
 
 ## Usage Example
@@ -22,7 +26,7 @@ webpack.config.js:
   test: /\.jpe?g$/,
   loaders: [
     {
-      loader: 'lqip-loader',
+      loader: '@mole-inc/lqip-loader',
       options: {
         path: '/media', // your image going to be in media folder in the output dir
         name: '[name].[ext]', // you can use [hash].[ext] too if you wish,
@@ -39,7 +43,7 @@ webpack.config.js:
   test: /\.(png|jpe?g)$/,
   loaders: [
     {
-      loader: 'lqip-loader',
+      loader: '@mole-inc/lqip-loader',
       options: {
         base64: true,
         palette: false
