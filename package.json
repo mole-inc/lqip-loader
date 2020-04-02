@@ -28,10 +28,16 @@
   },
   "homepage": "https://github.com/mole-inc/lqip-loader#readme",
   "dependencies": {
-    "loader-utils": "^1.1.0",
-    "@mole-inc/lqip": "^3.1.0"
+    "@mole-inc/lqip": "^3.1.1",
+    "loader-utils": "^2.0.0"
   },
   "peerDependencies": {
     "file-loader": "*"
+  },
+  "engines": {
+    "node": ">=10.13.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
