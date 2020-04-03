@@ -41,7 +41,10 @@ webpack.config.js:
   test: /\.(png|jpe?g)$/,
   use: [
     {
-      loader: '@mole-inc/lqip-loader'
+      loader: '@mole-inc/lqip-loader',
+      options: {
+        width: 200
+      }
     },
     {
       loader: 'url-loader',
@@ -62,7 +65,7 @@ console.log(banner.preSrc);
  
 console.log(banner.src); // that's the original image URL to load later!
 
-console.log(banner.sizes)
+console.log(banner.sizes);
 // { width: 14, height:7, originalWidth: 1400, originalHeight: 700 }
 ```
 
