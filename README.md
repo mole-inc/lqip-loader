@@ -12,7 +12,7 @@ npm install --save-dev @mole-inc/lqip-loader
 
 ## Usage Example
 
-Generating Base64 & dominant colours palette for a jpeg image imported in your JS bundle:
+Generating Base64 for a jpeg/png image imported in your JS bundle:
 
 PS: The large image file will be emitted & only 400byte of Base64 (if set to true in the loader options) will be bundled.
 
@@ -24,14 +24,12 @@ webpack.config.js:
    * default file-loader fallback
    **/
   test: /\.jpe?g$/,
-  loaders: [
+  use: [
     {
       loader: '@mole-inc/lqip-loader',
       options: {
         path: '/media', // your image going to be in media folder in the output dir
-        name: '[name].[ext]', // you can use [hash].[ext] too if you wish,
-        base64: true, // default: true, gives the base64 encoded image
-        palette: true // default: false, gives the dominant colours palette
+        name: '[name].[ext]', // you can use [hash].[ext] too if you wish
       }
     }
   ]
@@ -41,12 +39,11 @@ webpack.config.js:
    * Chained with your own url-loader or file-loader
    **/
   test: /\.(png|jpe?g)$/,
-  loaders: [
+  use: [
     {
       loader: '@mole-inc/lqip-loader',
       options: {
-        base64: true,
-        palette: false
+        width: 200
       }
     },
     {
@@ -65,13 +62,19 @@ import banner from './images/banner.jpg';
 
 console.log(banner.preSrc);
 // outputs: "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhY.... 
-
-// the object will have palette property, array will be sorted from most dominant colour to the least
-console.log(banner.palette) // [ '#628792', '#bed4d5', '#5d4340', '#ba454d', '#c5dce4', '#551f24' ]
  
-console.log(banner.src) // that's the original image URL to load later!
+console.log(banner.src); // that's the original image URL to load later!
 
+console.log(banner.sizes);
+// { width: 14, height:7, originalWidth: 1400, originalHeight: 700 }
 ```
+
+## Options
+
+| Name            |    Type     | Default | Description                                                                |
+| :-------------: | :---------: | :-----: | :------------------------------------------------------------------------- |
+| **`width`**     | `{Number}`  | `20`    | resize width |
+| **`forceJimp`** | `{Boolean}` | `false` | When this is falsy, use sharp if installed |
 
 ## Important
 

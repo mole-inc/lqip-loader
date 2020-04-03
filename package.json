@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --ext .js,.ts --ignore-path .gitignore .",
-    "lint:fix": "eslint --fix --ext .js,.ts --ignore-path .gitignore .",
+    "lint": "eslint --ext .js --ignore-path .gitignore .",
+    "lint:fix": "eslint --fix --ext .js --ignore-path .gitignore .",
     "release": "standard-version"
   },
   "repository": {
@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/mole-inc/lqip-loader#readme",
   "dependencies": {
-    "@mole-inc/lqip": "^3.1.1",
+    "@mole-inc/lqip": "^5.0.0",
     "loader-utils": "^2.0.0"
   },
   "peerDependencies": {
